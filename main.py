@@ -39,9 +39,12 @@ async def cd_get_chat_id(message : types.Message):
 
 @dp.message_handler(commands=['finish'], state='*')
 async def cd_finish(message : types.Message, state : FSMContext):
-    await message.answer("Вы в главном меню:",
-                         reply_markup=main_menu_kb(lang))
+    await message.answer("Вы в главном меню:")
     await state.finish()
+
+@dp.message_handler(commands=['help'])
+async def cd_help(message : types.Message):
+    await message.answer(message.text)
 
 
 
